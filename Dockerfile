@@ -21,7 +21,7 @@ RUN curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/rele
     alternatives --set python /usr/bin/python3 && \
     pip3 --quiet --no-cache-dir install ansible==${ansible_version} && \
     pip3 --quiet --no-cache-dir install bbprc && \
-    pip3 --quiet --no-cache-dir install ortu && \
+    pip3 --quiet --no-cache-dir install ortu==0.5.1.dev1 && \
     pip3 --quiet --no-cache-dir install oci-cli && \
     ansible-galaxy collection install oracle.oci
 # post install test
