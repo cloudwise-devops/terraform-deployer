@@ -19,7 +19,7 @@ RUN curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/rele
     curl -L https://raw.githubusercontent.com/warrensbox/tgswitch/release/install.sh | sh && \
     chmod +x /etc/profile.d/*  && \
     alternatives --set python /usr/bin/python3 && \
-    pip3 --quiet --no-cache-dir install ansible==${ansible_version} bbprc winrm ortu oci-cli && \
+    pip3 --quiet --no-cache-dir install ansible==${ansible_version} bbprc pywinrm ortu oci-cli && \
     ansible-galaxy collection install oracle.oci
 # post install test
 RUN python -c "import oci;print(oci.version)"
