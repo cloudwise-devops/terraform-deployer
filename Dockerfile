@@ -14,7 +14,8 @@ RUN yum update -y && \
                    curl \
                    tar \
                    git \
-                   jq
+                   jq \
+                   unzip
 RUN curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | sh && \
     curl -L https://raw.githubusercontent.com/warrensbox/tgswitch/release/install.sh | sh && \
     chmod +x /etc/profile.d/*  && \
