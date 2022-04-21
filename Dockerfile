@@ -1,6 +1,6 @@
 FROM oraclelinux:8.5
 ENV python_version="38"
-ENV ansible_version="4.3.0"
+ENV ansible_version="3.4.0"
 COPY scripts/* /etc/profile.d/
 RUN yum update -y && \
     yum install oraclelinux-developer-release-el8 oracle-epel-release-el8 -y && \
