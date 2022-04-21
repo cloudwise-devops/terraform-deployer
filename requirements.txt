@@ -1,0 +1,13 @@
+ansible==3.4.0
+ansible-lint
+oci>=2.30.0
+winrm>=0.4.1
+pypsrp
+requests>=2.23.0
+requests[socks]>=2.23.0
+jmespath
+pytest-testinfra
+teamcity-messages
+lxml
+netaddr==0.8.0
+zabbix-api==0.5.4
