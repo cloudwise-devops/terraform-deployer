@@ -16,8 +16,6 @@ RUN yum update -y && \
     yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && \
     yum -y install terraform-0.14.9 && \
     useradd way4
-COPY deploy_suders /etc/sudoers.d/deploy_suders
-RUN visudo -c
 RUN curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | sh && \
     curl -L https://raw.githubusercontent.com/warrensbox/tgswitch/release/install.sh | sh && \
     chmod +x /etc/profile.d/*  && \
@@ -39,5 +37,8 @@ RUN curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/rele
                   netaddr \
                   oci-cli && \
     ansible-galaxy collection install oracle.oci
+COPY deploy_suders /etc/sudoers.d/deploy_suders
+RUN chmod 0440 /etc/sudoers.d/deploy_suders && \
+    visudo -c
 # post install test
-RUN python -c "import oci;print(oci.version)" && visudo -c
+RUN python -c "import oci;print(oci.version)"
