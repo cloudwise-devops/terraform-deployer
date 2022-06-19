@@ -1,13 +1,17 @@
 FROM oraclelinux:8.5
 ENV python_version="38"
 ENV ansible_version="3.4.0"
-ENV terraform_version="0.14.9"
+ENV terraform_version="1.1.2"
 COPY scripts/* /etc/profile.d/
 RUN yum update -y && \
     yum install oraclelinux-developer-release-el8 oracle-epel-release-el8 yum-utils sudo tar zip -y && \
     yum install -y python${python_version} \
                    python${python_version}-pip \
                    curl make jq git unzip libcurl-devel && \
+    yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && \
+    yum -y install terraform-${terraform_version} && \
+    curl -L https://github.com/gruntwork-io/terragrunt/releases/download/v0.36.11/terragrunt_linux_amd64 -o /usr/bin/terragrunt && \
+    chmod +x  /usr/bin/terragrunt && \
     useradd way4
 RUN curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | sh && \
     curl -L https://raw.githubusercontent.com/warrensbox/tgswitch/release/install.sh | sh && \
