@@ -33,7 +33,11 @@ RUN curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/rele
                   lxml  \
                   netaddr \
                   oci-cli && \
-    ansible-galaxy collection install oracle.oci
+    ansible-galaxy collection install oracle.oci && \
+    curl -L https://networkgenomics.com/try/mitogen-0.3.3.tar.gz -o /tmp/mitogen.tar.gz && \
+    mkdir /opt/ansible_plugins && \
+    tar -xvf tar -xvf /tmp/mitogen.tar.gz -C /opt/ansible_plugins && \
+    rm -rf /tmp/mitogen.tar.gz
 COPY deploy_suders /etc/sudoers.d/deploy_suders
 RUN chmod 0440 /etc/sudoers.d/deploy_suders && \
     visudo -c
